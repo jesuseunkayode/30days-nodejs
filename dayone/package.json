@@ -4,7 +4,7 @@
   "description": "",
   "main": "dayone.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dayone.js"
   },
   "keywords": [],
   "author": "",
