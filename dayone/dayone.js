@@ -4,7 +4,7 @@ const port = 3000;
 const server = http.createServer((request, response) => {
     response.writeHead(200, {'Content-Type': 'text/plain'})
      response.write("i serve plain text on the server successfully")
-    response.end()
+    response.end("ghguthg")
 })
 
 server.listen(port, host, (err) => {

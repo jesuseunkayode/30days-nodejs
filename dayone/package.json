@@ -4,9 +4,13 @@
   "description": "",
   "main": "dayone.js",
   "scripts": {
-    "start": "node dayone.js"
+    "start": "node dayone.js",
+    "dev": "nodemon dayone.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }
