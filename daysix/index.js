@@ -37,3 +37,7 @@ book.push('make your day count')
 const exp = [31,15,16,27,85,33,19];
  exp.sort()
  console.log(exp)
+
+ //splice method of array
+
+ const house = ['flat', 'bungalow', 'duplex-']
