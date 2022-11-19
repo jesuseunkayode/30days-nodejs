@@ -5,12 +5,12 @@ const path = require('path');
 const { Db } = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
 const connectionString = "mongodb://mongodb://localhost:27017/lands";
-const client = new MongoClient((connectionString), {
+const client = new MongoClient(connectionString, {
     useNewurlParser: true,
     useUnifiedTopology: true
-});
+})
 
-const PORT = process.env || 3000;
+const PORT = process.env.PORT || 3000;
 
 console.log("Server listening at : 3000");
 app.use('/public', express.static(__dirname + '/public'));
@@ -21,7 +21,7 @@ app.get('/', (request, response) => {
      response.set({
         'Access-Control-Allow-Origin' : '*'
      });
-     return res.redirect('/public/index.html');
+     return response.redirect('/public/index.html');
 }).listen(3000);
 
 const getHash = (pass, phone) => {
@@ -46,22 +46,21 @@ app.post('/signup', (request, response)=> {
         "phone": phone
       }
 
-      client.connect((err, result) => {
+      client.connect(connectionString, (err, db) => {
         if(err) {
             throw err;
         }
         console.log("connected to database successfully");
-        Db.collection(details).insertOne(data, (err, collection) =>{
-            if(err){ throw err}
+        db.collection(details).insertOne(data, (err, collection) => {
+            if(err) throw err;
             console.log("Record inserted successfully");
 			console.log(collection);
-        })
-      })
+        });
+      });
       console.log("DATA is " + JSON.stringify(data) );
-	res.set({
+	response.set({
 		'Access-Control-Allow-Origin' : '*'
 	});
-	return res.redirect('/public/success.html');  
-
+	return response.redirect('/public/success.html');  
 
 })
